@@ -1,0 +1,37 @@
+<!<%- include('../partials/header') %>
+    
+<section id="show-page">
+    <div>Airline: </div>
+    <div>
+        <%= flight.airline %>
+    </div>
+    <div>Airport: </div>
+    <div>
+        <%= flight.airport %>
+    </div>
+    <div>Flight Number: </div>
+    <div>
+        <%= flight.flightNo %>
+    </div>
+    <label>Destinations: </label>
+    <form action="/flights/<%= flight._id %>/destinations" method="POST">
+        <select name="destinations">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+        </select>
+        <input type="date" name="departs">
+        <input type="submit" value="Add Destination">
+    </form> 
+    
+    <div>Upcoming Destinations:</div>
+    <ul>
+        <%- flight.destinations.map(f => 
+        `<li>${flight.airport} ${f.destinations} <small>${f.departs}</small></li>`
+        ).join("") %>
+    </ul>
+</section>
+
+<%- include('../partials/footer') %>
