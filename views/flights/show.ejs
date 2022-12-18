@@ -25,11 +25,12 @@
         <input type="date" name="departs">
         <input type="submit" value="Add Destination">
     </form> 
+    <a href="/tickets/new">Make Your Ticket</a>
     
     <div>Upcoming Destinations:</div>
     <ul>
         <%- flight.destinations.map(f => 
-        `<li>${flight.airport} ${f.destinations} <small>${f.departs}</small></li>`
+        `<li>From: ${flight.airport} <br> To: ${f.destinations} <br> Departure Time: ${f.departs.toLocaleDateString()} <br><br></li>`
         ).join("") %>
     </ul>
 </section>
