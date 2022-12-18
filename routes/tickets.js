@@ -5,6 +5,6 @@ const ticketsCtrl = require('../controllers/tickets')
 
 router.get("/tickets/new", ticketsCtrl.new)
 router.post("/tickets", ticketsCtrl.create)
-// router.post("/flights/:id/tickets", ticketsCtrl.addTicket)
+router.post("/flights/:id/tickets", ticketsCtrl.addToFlight)
 
 module.exports = router
