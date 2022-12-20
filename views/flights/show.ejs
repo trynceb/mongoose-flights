@@ -24,7 +24,30 @@
         </select>
         <input type="date" name="departs">
         <input type="submit" value="Add Destination">
-    </form> 
+    </form>
+
+    <a href="/flights/<%= flight._id %>/tickets/new">Make a New Ticket</a>
+
+    <table id="tickets">
+        <thead>
+            <tr>
+                <th>Tickets</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tickets.forEach(function(t) { %>
+                <tr>
+                    <td><%= t.seat %></td>
+                </tr>
+                <tr>
+                    <td><%= t.flight %></td>
+                </tr>
+                <tr>
+                    <td><%= t.price %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
  
     <div>Upcoming Destinations:</div>
     <ul>

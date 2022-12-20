@@ -1,4 +1,5 @@
 const Flight = require('../models/flight')
+const ticket = require('../models/ticket')
 
 module.exports = {
     index,
@@ -15,8 +16,9 @@ function index(req, res) {
 
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
-        console.log("This is show", flight)
-        res.render("flights/show", { title: "Flight Details", flight})
+        ticket.find( {flight: flight._id}, function(err, tickets) {
+            res.render("flights/show", { title: "Flight Details", flight, tickets})
+        })
     })
 }
 
@@ -25,12 +27,6 @@ function newFlight(req, res) {
 }
 
 function create(req,res) {
-    // req.body.cast = req.body.cast.trim()
-    // if (req.body.cast) req.body.cast = req.body.cast.split(/\s*,\s*/)
-    // for (let key in req.body) {
-    //     if(req.body[key] === '') delete req.body[key]
-    // }
-    // console.log(req.body)
     const flight = new Flight(req.body)
     flight.save(function(err) {
         if (err) return res.render("flights/new")

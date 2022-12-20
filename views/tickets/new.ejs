@@ -1,18 +1,13 @@
 <!<%- include('../partials/header') %>
 
 <form id="new-form" action="/tickets" method="POST">
+    <input name="flight" type="hidden" value="<%= flightId %>"">
     <label>Seat:</label>
         <input name="seat" required pattern="[A-F][1-9]\d?">
     <label>Price:</label>
         <input type="number" name="price">
     <label>Flight:</label>
-        <form action="/flights/<%= flights._id %>" method="POST">
-            <select name="flightId">
-                <%- flights.map(f =>
-                `<option value="${f._id}">${f.airline} ${f.flightNo}</option>`
-                ).join("") %>
-            </select>
-        </form>
+        <div><%= flight.flightNo %></div>
     <input type="submit" value="Add Ticket">
 </form>
 

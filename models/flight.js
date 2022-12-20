@@ -27,7 +27,7 @@ const flightSchema = new Schema({
         type: Number, min: 10, max: 9999,
         required: true,
     },
-    destinations: [destinationsSchema]
+    destinations: [destinationsSchema],
 })
 
 module.exports = mongoose.model("Flight", flightSchema)

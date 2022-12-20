@@ -9,8 +9,7 @@ const ticketSchema = new Schema( {
         type: Number, min: 0
     },
     flight: {
-        type: String,
-        enum: []
+        type: Schema.Types.ObjectId, ref: "Flight"
     }
 })
 
